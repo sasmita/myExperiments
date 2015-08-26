@@ -17,4 +17,6 @@ Creating Shared libraries with gcc on Linux
    -L option (Since gcc doesn't know where to search for libfoo.so.
 		As it is in current directory, we use -L.)
  	
-	 
+4. Run the executable
+
+   ./foo	 
