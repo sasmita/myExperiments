@@ -20,9 +20,9 @@ This guide will help you understand Azure table storage and perform CRUD(Create,
   ```
   3. Azure Storage C++ client library also depends on C++ Rest SDK **casablanca**.
     1.  Install needed tools and libraries:  
-            ``` 
-            sudo apt-get install g++-4.8 g++ git make libboost1.54-all-dev libssl-dev cmake
-            ```
+    ``` 
+        sudo apt-get install g++-4.8 g++ git make libboost1.54-all-dev libssl-dev cmake
+    ```
     2. Clone Casablanca from git
     ```
        git clone https://git.codeplex.com/casablanca
