@@ -48,7 +48,7 @@ This guide will help you understand Azure table storage and perform CRUD(Create,
   
   5. Building Sample code:
   ```bash
-  CASABLANCA_DIR=<path to Casablanca> CXX=g++-4.8 cmake .. -DCMAKE_BUILD_TYPE=Release -DBUILD_SAMPLES
+  CASABLANCA_DIR=<path to Casablanca> CXX=g++-4.8 cmake .. -DCMAKE_BUILD_TYPE=Release -DBUILD_SAMPLES=1
   make
   ```
   6. Run the Samples:
