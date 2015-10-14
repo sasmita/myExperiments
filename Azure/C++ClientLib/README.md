@@ -28,7 +28,7 @@ This guide will help you understand Azure table storage and perform CRUD(Create,
        git clone https://git.codeplex.com/casablanca
     ```
     3. Build SDK for Release
-   ```
+   ``` bash 
         cd casablanca/Release
         mkdir build.release
         cd build.release
@@ -36,6 +36,28 @@ This guide will help you understand Azure table storage and perform CRUD(Create,
         make
    ```
 
+  4. Build SDK 
+  ``` bash
+    cd azure-storage-cpp/Microsoft.WIndowsAzure.Storage
+    mkdir build.release
+    cd build.release
+    CASABLANCA_DIR=<path to Casablanca> CXX=g++-4.8 cmake .. -DCMAKE_BUILD_TYPE=Release
+    make
+  ```
+  The Library is generated under `azure-storage-cpp/Microsoft.WindowsAzure.Storage/build.release/Binaries/`.
+  
+  5. Building Sample code:
+  ```bash
+  CASABLANCA_DIR=<path to Casablanca> CXX=g++-4.8 cmake .. -DCMAKE_BUILD_TYPE=Release -DBUILD_SAMPLES
+  make
+  ```
+  6. Run the Samples:
+
+  ```bash
+  cd Binaries
+  ./samplestables           # run the tables sample
+  ```
+ 
 
 Refernces:
 ------------
