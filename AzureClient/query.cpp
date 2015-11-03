@@ -23,6 +23,7 @@ void updateTableEntries()
     // Initialize storage account
     azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
 
+    // Create the table client
     azure::storage::cloud_table_client table_client = storage_account.create_cloud_table_client();
 
     // Retrieve a reference to a table 
