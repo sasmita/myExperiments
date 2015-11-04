@@ -8,7 +8,7 @@ using namespace std;
 #include "was/table.h"
 #include "was/common.h"
 
-utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=iotvendingmachine;AccountKey=hk9SEM9J/PMvxlWiWA+uQWToMzM7QADAcKPBkjlsBp9OTPv2DbPLvrcxDjWXwzU+pqWyII7Ps78dY9YB4DAIXg=="));
+utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=iotvendingmachine;AccountKey=KEY"));
 
 int gCokeCount = -1;
 int gPepsiCount = -1;
