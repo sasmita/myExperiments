@@ -27,7 +27,7 @@ Inorder to develop Qt for Android, first below packages needs to be installed
  	http://download.qt.io/archive/qt/5.5/5.5.0/
  
  
-For more details: Please check the getting started: http://doc.qt.io/qt-5/androidgs.html
+For more details: Please check the getting started here: http://doc.qt.io/qt-5/androidgs.html
  
 
  
