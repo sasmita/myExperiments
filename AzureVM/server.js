@@ -3,8 +3,8 @@ var port = process.env.PORT || 1200;
 
 var azure = require('azure-storage');
 
-var accountKey = ''; // enter account key
-var accountName = ''; //enter account name
+var accountKey = '';  // Enter account key
+var accountName = ''; // Enter account name 
 
 var tableService = azure.createTableService(accountName, accountKey);
 
@@ -37,9 +37,12 @@ tableService.queryEntities('Inventory', query, null, function(error, result, res
 		" <body> " +
 		" <button onclick='myFunction()'> Buy </button> <p id='demo'></p>" + 
 			"<script> function myFunction()" + 
-				" { var x = '';" + 
+				"{ var coke_val = document.getElementById('ck').value; " +
+				"  var pep_val = document.getElementById('pep').value; " +
+				"  var price = ( coke_val * " + ck_price + " + pep_val * " + pep_price + "); " +  
+				"  var x = '';" + 
 				  "if (confirm('Are you sure to buy these items?') == true)" + 
-					"{ x = 'you pressed OK!' + '<br>' + ' selected coke: '+ document.getElementById('ck').value + '<br>' +'selected pepsi:' + document.getElementById('pep').value }" +
+					"{ x = 'you pressed OK!' + '<br>' + ' selected coke: '+ coke_val + '<br>' +'selected pepsi:' + pep_val + '<br>'+ '<br>' + 'your total is: ' + price }" +
 				  "else" +
 					"{ x = 'you pressed Cancel!'; }" +
 				  "document.getElementById('demo').innerHTML = x; }" +
