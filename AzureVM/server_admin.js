@@ -111,8 +111,6 @@ var eventTable;
 
 eventTable = "<html>" +
 		" <h2> Events Data </h2>" + 
-		" <form onClick='history.go()'></form>" +
-		//" <form><input type=button value='Refresh' onClick='history.go()'></form>" +
 		" <table style= 'width:100%' border='1'>" +
 		   "<tr>" +
 		   	"<td> RowKey </td> " +
@@ -121,20 +119,16 @@ eventTable = "<html>" +
 		   	"<td> Val </td> " +
 		   	"<td> Status </td> " +
 		   	"<td> TimeStamp </td> </tr>";
-
+			
 			var query4 = new azure.TableQuery()
-			  .select(['Count'])
-
-			tableService.queryEntities('Count', query4, null, function(error, result, response){
-				row_count = result.entries[0].Count._;
-
-			//eventTable +=  "<h1>" + row_count + "</h1>" ;
-
-			var query5 = new azure.TableQuery()
 			.select(['RowKey', 'EventType', 'EventDescription', 'Val', 'Status', 'TimeStamp'])
 
-			tableService.queryEntities('EventSample', query5, null, function(error, result, response){
+			tableService.queryEntities('EventSample', query4, null, function(error, result, response){
 				var i;
+
+				var row_count = (result.entries).length;
+
+				console.log("total rows in event table is:", row_count);
 
 				for(i = 0; i < row_count ; i++)
 				{  	
@@ -161,8 +155,7 @@ eventTable = "<html>" +
 							"</tr>"; 
 					}
 				}
-				eventTable += "</table>" + " </html>";
-			});
+			eventTable += "</table>" + " </html>";
 			});
 
 http.createServer(function(req,res){ 
