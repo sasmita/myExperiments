@@ -8,12 +8,45 @@ var accountName = ''; // Enter account name
 
 var tableService = azure.createTableService(accountName, accountKey);
 
-var alertmsg;
+var alertTempMsg;
 
 var query1 = new azure.TableQuery()
+  .select(['RowKey','Status', 'TimeStamp'])
+  .where('EventType eq ?', 'temperature');
+
+tableService.queryEntities('EventSample', query1, null, function(error, result, response){
+
+	var count = (result.entries).length;
+
+	var res = result.entries[count-1].Status._;
+
+	if(res == 'not ok')
+	{
+		console.log("Alert");
+	}	
+
+	if(error) {
+      		console.log("Error executing query");
+      	}
+      	else {
+		console.log("Query was successful");
+		
+		alertTempMsg =
+			"<html>" +
+			"<script type='text/javascript'> " +
+			" if ('" + res + "' == 'not ok')" +
+				" { alert ('Please check vending machine temperature! ') }" +
+			"</script>" +
+			"</html>"
+	}
+});
+
+var alertStockmsg;
+
+var query2 = new azure.TableQuery()
   .select(['Available'])
 
-tableService.queryEntities('Inventory', query1, null, function(error, result, response){
+tableService.queryEntities('Inventory', query2, null, function(error, result, response){
 	ck_count = result.entries[0].Available._;
 	pep_count = result.entries[1].Available._;
 
@@ -23,7 +56,7 @@ tableService.queryEntities('Inventory', query1, null, function(error, result, re
       	else {
 		console.log("Query was successful");
 
-		alertmsg =
+		alertStockMsg =
 			"<html>" +
 			"<script type='text/javascript'> " +
 			" var x = 2 ;" +
@@ -36,10 +69,10 @@ tableService.queryEntities('Inventory', query1, null, function(error, result, re
 
 var inventoryTable;
 
-var query2 = new azure.TableQuery()
+var query3 = new azure.TableQuery()
   .select(['Price', 'Available'])
 
-tableService.queryEntities('Inventory', query2, null, function(error, result, response){
+tableService.queryEntities('Inventory', query3, null, function(error, result, response){
 	ck_count = result.entries[0].Available._;
 	ck_price = result.entries[0].Price._;
 	pep_count = result.entries[1].Available._;
@@ -89,16 +122,18 @@ eventTable = "<html>" +
 		   	"<td> Status </td> " +
 		   	"<td> TimeStamp </td> </tr>";
 
-			var query3 = new azure.TableQuery()
+			var query4 = new azure.TableQuery()
 			  .select(['Count'])
 
-			tableService.queryEntities('Count', query3, null, function(error, result, response){
+			tableService.queryEntities('Count', query4, null, function(error, result, response){
 				row_count = result.entries[0].Count._;
 
-			var query4 = new azure.TableQuery()
+			//eventTable +=  "<h1>" + row_count + "</h1>" ;
+
+			var query5 = new azure.TableQuery()
 			.select(['RowKey', 'EventType', 'EventDescription', 'Val', 'Status', 'TimeStamp'])
 
-			tableService.queryEntities('EventSample', query4, null, function(error, result, response){
+			tableService.queryEntities('EventSample', query5, null, function(error, result, response){
 				var i;
 
 				for(i = 0; i < row_count ; i++)
@@ -132,5 +167,5 @@ eventTable = "<html>" +
 
 http.createServer(function(req,res){ 
 res.writeHead(200, {'Content-Type': 'text/html' });
-	res.end(alertmsg + inventoryTable + eventTable);
+	res.end(alertTempMsg + alertStockMsg + inventoryTable + eventTable);
 	}).listen(port);
