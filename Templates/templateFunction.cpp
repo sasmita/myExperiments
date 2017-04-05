@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-/* template <class type> type add(type a, type b) */
+/* template <class type> type function_name(type a, type b) */
 template <class T> T getMax(T a,T b)
 {
     T result;
