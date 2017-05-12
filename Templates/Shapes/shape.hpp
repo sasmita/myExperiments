@@ -1,26 +1,27 @@
 #include<iostream>
 using namespace std;
 
+template<typename T>
 class Shape
 {
     public:
-      Shape(int a, int b) {
+      Shape(T a, T b) {
         height = a;
         width = b;
       }
 
-      virtual int area();
+      T area();
     protected:
-      int height;
-      int width;
+      T height;
+      T width;
 };
 
-
-class Rectangle: public Shape
+template <typename T>
+class Rectangle: public Shape<T>
 {
     public:
-      Rectangle(int a, int b):Shape(a,b) {}
-      int area();
+      Rectangle(T a, T b) {}
+      T area();
 };
 
 

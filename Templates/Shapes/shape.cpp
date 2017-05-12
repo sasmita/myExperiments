@@ -2,15 +2,17 @@
 using namespace std;
 #include "shape.hpp"
 
-int Shape::area()
+template <typename T>
+T Shape<T>::area()
 {
     cout << "Parent class Area" << endl;
     return 0;
 }
 
-int Rectangle::area()
+template <typename T>
+T Rectangle<T>::area()
 {
     cout << "Rectangle class Area" << endl;
-    return (width * height);
+    return 0;
 }
 

@@ -4,9 +4,9 @@ using namespace std;
 
 int main()
 {
-    Shape *s;
-    Rectangle rec(10, 20);
+    Shape <int>s(10, 20);
+    //Rectangle rec<T>(10, 20);
 
-    s = &rec;
-    cout << s->area() << endl;
+    //s = &rec;
+    cout << s.area() << endl;
 }

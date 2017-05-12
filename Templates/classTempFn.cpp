@@ -4,7 +4,7 @@ using namespace std;
 class MyVal {
     public:
       template <typename T>
-      void fun(T val);
+      virtual void fun(T val);
 };
 
 template <typename T>
