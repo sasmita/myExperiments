@@ -1,21 +1,21 @@
 #include<iostream>
 using namespace std;
 
+template <class T> 
 class MyVal {
     public:
-      template <typename T>
       virtual void fun(T val);
 };
 
-template <typename T>
-void MyVal :: fun(T val)
+template <class T>
+void MyVal<T> :: fun(T val)
 {
     cout << "value is " << val << endl;
 }
 
 int main()
 {
-    MyVal m;
-    m.fun<int>(100);
-    m.fun<double>(22.5);
+    MyVal<double> m;
+    m.fun(100);
+    m.fun(22.5);
 }
