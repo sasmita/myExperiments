@@ -25,7 +25,7 @@ T checkEven<T> :: isEven()
 
 int main()
 {
-    checkEven <int> C(30);
+    checkEven <int> C(23);
     if((C.isEven()) == 0)
         cout << "Not even" << endl;
     else
