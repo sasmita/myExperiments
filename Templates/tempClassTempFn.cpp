@@ -10,7 +10,7 @@ class mypair {
             a = first;
             b = second;
         }
-    virtual T getMax(); 
+    T getMax(); 
 };
 
 template <class T>
